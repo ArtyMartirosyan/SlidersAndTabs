@@ -1,0 +1,31 @@
+h2 {
+    font-family: Arial, sans-serif;
+}
+td {
+    border: 1px solid black;
+}
+table {
+    padding: 40px;
+}
+td {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+}
+body {
+    background-color: lavender;
+    font-family: Arial, sans-serif;
+}
+#borders {
+    border-style: dotted;
+    border-radius: 5px;
+    padding: 40px;
+}
+.box {
+    width: 1000px;
+    height: 500px;
+    overflow: auto;
+}
+.error {
+    color: red;
+ }
