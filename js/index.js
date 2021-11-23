@@ -75,25 +75,26 @@ document.addEventListener('DOMContentLoaded', function() {
         var child = document.getElementsByClassName("box")[0];
         parent.removeChild(child);
     }
-
+    //Saving tables in tabs
     function myTabs() {
-        var count = $("#tabs li").length + 1;
+        var count = $("#tabs li").length + 1; //total tabs created
     
         if(count > 30) {
             alert("Too many tables, plase delete at least one.");
             return false;
         }
-        $("#tabs").tabs();
+        $("#tabs").tabs();      //create a tab
         index++;
         var hx = Number(document.getElementById('rfrom').value);
         var hy = Number(document.getElementById('rto').value);
         var vx = Number(document.getElementById('cfrom').value);
         var vy = Number(document.getElementById('cto').value);
         var header =  "<li class='tab'><a href='#tab-" + index + "'>" + "(" + hx + ", " + hy + ")" + " x " + "(" + vx + ", " + vy + ")" + "</a>" + "<span class='ui-icon ui-icon-close' role='presentation'></span>" + "</li>";
-        $("div#tabs ul").append(header);
-        $( "div#tabs" ).append('<div id="tab-' + index + '">' + $(".box").html() + '</div>');
+        $("div#tabs ul").append(header);    //add table
+        $( "div#tabs" ).append('<div id="tab-' + index + '">' + $(".box").html() + '</div>');    //tab header
         $("#tabs").tabs("refresh");
-        $("#tabs").tabs("option", "active", -1);
+        $("#tabs").tabs("option", "active", -1); //opens the most recently created table
+        //option to delete table tabs learn from jQuery UI website
         $("#tabs").delegate("span.ui-icon-close", "click", function() {
             var panelID = $(this).closest("li").remove().attr("aria-controls");
             $("#"+panelID).remove();
@@ -114,6 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
+//adding sliders below each table input
 $(document).ready(function() {
     $("#s_rfrom").slider({
         min:-20,
@@ -146,6 +148,7 @@ $(document).ready(function() {
 
 });
 
+//validating the table inputs
 $(document).ready(function() {
     $('form[id="formInput"]').validate({
         rules: {
@@ -174,7 +177,7 @@ $(document).ready(function() {
                 required: true
             }
         },
-    
+        // output error messages
         messages: {
             rfrom: {
                 number: " you did not enter a valid number.<br/>Enter a number between -100 and 100 for 'row from' value.",
@@ -203,9 +206,8 @@ $(document).ready(function() {
         },
     });
 
+    //realtime error output msg
     $("#formInput").on('keyup blur', function(){
         $("#formInput").validate().checkForm();
     });
 });
-
-
